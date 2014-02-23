@@ -1,1 +1,43 @@
-Homepage
+<!doctype html>
+<head>
+  <title>Ondergrondse containers</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+function initialize() {
+//	var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var latlng = new google.maps.LatLng(51.441959, 5.476455);
+    var settings = {
+        zoom: 14,
+        center: latlng,
+        mapTypeControl: true,
+        mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+        navigationControl: true,
+        navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
+
+    bakken = {{ bakken|safe }}
+
+    for (i in bakken) {
+        var bak = bakken[i];
+
+        var pos = new google.maps.LatLng(bak.lat, bak.lng);
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: 'static/images/' + (bak['type'] == 'Restafval' ? 'vuilniszak' : 'fles') + '.png'
+        });
+
+    }
+}
+</script>
+</head>
+
+<body onload="initialize()">
+<h1>Ondergrondse containers</h1>
+<div id="map_canvas" style="width:800px; height:800px"></div>
+
+</body>
+</html>
