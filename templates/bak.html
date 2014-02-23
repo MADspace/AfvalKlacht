@@ -1,0 +1,20 @@
+Wat is je klacht over bak {{ id }}?
+
+<form method="POST">
+{% csrf_token %}
+<select name="categorie">
+    <option>vol</option>
+    <option>defect</option>
+    <option>anders</option>
+</select>
+
+Foto:
+
+Opmerking:
+<input name="opmerking">
+
+E-mail:
+<input name="email">
+
+<input type="submit">
+</form>
