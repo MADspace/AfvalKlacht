@@ -31,6 +31,18 @@ function initialize() {
         });
 
     }
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+    function showPosition(position)
+    {
+        console.log(position);
+        map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+        map.setZoom(18);
+    }
 }
 </script>
 </head>
