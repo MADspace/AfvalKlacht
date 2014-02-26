@@ -12,6 +12,8 @@ class Klacht(models.Model):
 
     opmerking = models.CharField(max_length=256)
 
+    # foto = models.ImageField(upload_to='fotos')
+
     status = models.CharField(max_length=128, choices=(
         ('gemeld', 'Gemeld'),
         ('onderzocht', 'Wordt onderzocht'),

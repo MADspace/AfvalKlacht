@@ -49,11 +49,20 @@ function initialize() {
     }
 }
 </script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+</style>
 </head>
 
-<body onload="initialize()">
-<h1>Ondergrondse containers</h1>
-<div id="map_canvas" style="width:800px; height:800px"></div>
+<body onload="initialize()" style="min-height: 100%">
+<div id="map_canvas" style="height:100%;"></div>
 
 </body>
 </html>
