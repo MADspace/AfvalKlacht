@@ -120,7 +120,7 @@ var KiesMeldingView = Jr.View.extend({
 
 	  onClickShowMoreButton: function() {
 	    // Jr.Navigator works like Backbone.history.navigate, but it allows you to add an animation in the mix.
-	    Jr.Navigator.navigate('page3',{
+	    Jr.Navigator.navigate('foto',{
 	      trigger: true,
 	      animation: {
 	        // Do a stacking animation and slide to the left.
@@ -157,26 +157,78 @@ var KiesMeldingView = Jr.View.extend({
 
 // ## PushStateView
 
-var PushStateView = Jr.View.extend({
+var FotoView = Jr.View.extend({
   render: function() {
-	    this.$el.html(document.getElementById('page3').cloneNode(true));
+	    this.$el.html(document.getElementById('foto').cloneNode(true));
     return this;
   },
 
   events: {
-    'click .button-prev': 'onClickButtonPrev'
+    'click .button-prev': 'onClickButtonPrev',
+    'click .button-next': 'onClickButtonNext',
   },
 
   onClickButtonPrev: function() {
-    Jr.Navigator.navigate('page2',{
+    Jr.Navigator.navigate('kiesmelding',{
       trigger: true,
       animation: {
         type: Jr.Navigator.animations.SLIDE_STACK,
         direction: Jr.Navigator.directions.RIGHT
       }
     });
-  }
+  },
 
+  onClickButtonNext: function() {
+    Jr.Navigator.navigate('opmerking',{
+      trigger: true,
+      animation: {
+        type: Jr.Navigator.animations.SLIDE_STACK,
+        direction: Jr.Navigator.directions.LEFT
+      }
+    });
+  },
+});
+
+var OpmerkingView = Jr.View.extend({
+  render: function() {
+	    this.$el.html(document.getElementById('opmerking').cloneNode(true));
+    return this;
+  },
+
+  events: {
+    'click .button-prev': 'onClickButtonPrev',
+    'click .button-next': 'onClickButtonNext',
+  },
+
+  onClickButtonPrev: function() {
+    Jr.Navigator.navigate('foto',{
+      trigger: true,
+      animation: {
+        type: Jr.Navigator.animations.SLIDE_STACK,
+        direction: Jr.Navigator.directions.RIGHT
+      }
+    });
+  },
+
+  onClickButtonNext: function() {
+    Jr.Navigator.navigate('verstuur',{
+      trigger: true,
+      animation: {
+        type: Jr.Navigator.animations.SLIDE_STACK,
+        direction: Jr.Navigator.directions.Left
+      }
+    });
+  },
+});
+
+var OpmerkingView = Jr.View.extend({
+  render: function() {
+	    this.$el.html(document.getElementById('verstuurd').cloneNode(true));
+    return this;
+  },
+
+  events: {
+  },
 });
 
 //## Routing to your Views
@@ -189,7 +241,8 @@ var AppRouter = Jr.Router.extend({
   routes: {
     'kaart': 'kaart',
     'kiesmelding': 'kiesmelding',
-    'page3': 'page3'
+    'foto': 'foto',
+    'opmerking': 'opmerking'
   },
 
   kaart: function(){
@@ -200,11 +253,17 @@ var AppRouter = Jr.Router.extend({
     this.renderView(new KiesMeldingView());
   },
 
-  page3: function() {
-    var pushStateView = new PushStateView();
-    this.renderView(pushStateView);
-  }
+  foto: function() {
+    this.renderView(new FotoView());
+  },
 
+  opmerking: function() {
+    this.renderView(new OpmerkingView());
+  },
+
+  verstuurd: function() {
+    this.renderView(new VerstuurdView());
+  }
 });
 
 var startup = new AppRouter();

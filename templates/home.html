@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Junior - A front-end framework for building HTML5 mobile
-	apps with a native look and feel.</title>
+<title>Maak Eindhoven Schoner</title>
 
 <meta name="viewport"
 	content="initial-scale=1 maximum-scale=1 user-scalable=no">
@@ -90,6 +89,9 @@ html, body {
 	-moz-opacity: 0;
 	filter: alpha(opacity = 0);
 	font-size: 150px;
+	top: 0;
+	left: 0;
+
 }
 .carousel-item {
   height:800px;
@@ -154,28 +156,62 @@ html, body {
 			</div>
 		</div>
 
-
-
-		<div id="iphone-window" style="left: 40%">
-			<div class="content" id="page3">
+        <div id="iphone-window" style="left: 40%">
+			<div class="content" id="foto">
 
 				<header class="bar-title">
 					<div class="header-animated">
 						<div class="button-prev">Terug</div>
-						<h1 class="title">Glas container vol</h1>
+						<h1 class="title">Foto</h1>
 					</div>
 				</header>
 				<div class="content pushstate-content" style="overflow: hidden">
-					<p>Wil je op de hoogte gehouden worden van deze melding?</p>
-					<input type="file" id="fileInput" accept="image/*"> <img
-						src="docs/images/camera.png" width="150" height="150">
+					<p>Wil je een foto toevoegen aan je melding?</p>
+					 <img
+						src="/static/images/camera.png" width="150" height="150">
 
-					<div class="button-positive button-block show-more-button">Verstuur
-						foto</div>
+
+					<div class="button-positive button-block button-foto" style="position: relative; ">Voeg een foto toe
+					    <input type="file" id="fileInput" accept="image/*"></div>
+					<div class="button-positive button-block button-next">Ga verder</div>
 
 				</div>
 			</div>
 		</div>
+
+	    <div id="iphone-window" style="left: 60%">
+			<div class="content" id="opmerking">
+
+				<header class="bar-title">
+					<div class="header-animated">
+						<div class="button-prev">Terug</div>
+						<h1 class="title">Opmerking</h1>
+					</div>
+				</header>
+				<div class="content pushstate-content" style="overflow: hidden">
+					<textarea style="height: 70%; margin-bottom: 10%;" placeholder="Voeg een korte opmerking toe..."></textarea>
+
+					<div class="button-positive button-block button-next">Ga verder</div>
+
+				</div>
+			</div>
+		</div>
+
+	    <div id="iphone-window" style="left: 60%">
+			<div class="content" id="verstuurd">
+
+				<header class="bar-title">
+					<div class="header-animated">
+						<h1 class="title">Verstuurd</h1>
+					</div>
+				</header>
+				<div class="content pushstate-content" style="overflow: hidden">
+					<p>Uw melding is verstuurd naar de gemeente, bedankt voor uw feedback!</p>
+
+				</div>
+			</div>
+		</div>
+
 
 	</div>
 	<script src="/static/js/example.js"></script>
