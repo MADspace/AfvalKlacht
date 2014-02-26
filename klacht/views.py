@@ -15,6 +15,7 @@ def bak(request, id):
     if request.POST:
         klacht = Klacht()
         klacht.afvalbak_id = int(id)
+        klacht.foto = request.POST['foto']
         klacht.datum = datetime.datetime.now()
         klacht.categorie = request.POST['categorie']
         klacht.save()
