@@ -51,7 +51,13 @@ function initialize() {
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-            window.location = 'bak/' + this.afvalbak;
+            Jr.Navigator.navigate('kiesmelding',{
+    	      trigger: true,
+    	      animation: {
+    	        type: Jr.Navigator.animations.SLIDE_STACK,
+    	        direction: Jr.Navigator.directions.LEFT
+    	      }
+    	    });
         });
 
     }
@@ -121,18 +127,13 @@ html, body {
 	<div class="debug">
 
 		<div id="iphone-window" style="left: 0%">
-			<div class="content" id="page1" style="overflow:hidden">
-
-
-<div id="map_canvas" style="height:100%; width: 100%;"></div>
-
-				<div class="button-positive button-block show-more-button">Stap
-					1: maak een melding</div>
+			<div class="content" id="kaart" style="overflow:hidden">
+                <div id="map_canvas" style="height:100%; width: 100%;"></div>
 			</div>
 		</div>
 
 		<div id="iphone-window" style="left: 20%">
-			<div class="content" id="page2">
+			<div class="content" id="kiesmelding">
 				<header class="bar-title">
 					<div class="header-animated">
 						<div class="button-prev">Terug</div>
@@ -151,46 +152,6 @@ html, body {
 					<div id="mapholder" class="mapholder"></div>
 				</div>
 			</div>
-			<!--
-		<div class="content" id="page2">
-
-			<header class="bar-title">
-				<div class="header-animated">
-					<div class="button-prev">Back</div>
-					<h1 class="title">Open Data</h1>
-					<div class="button-next">Next</div>
-				</div>
-			</header>
-			<header class="junior-intro">
-				<h1 class="junior-name">
-					<i class="icon-umbrella"></i> Pleio
-				</h1>
-				<p>Vertaal <a href="http://www.pleio.nl" > Pleio</a> Open Data naar Apps.</p>
-			</header>
-			<ul class="list divider-list">
-				<li class="list-divider">Scroll door de features</li>
-			</ul>
-			<div class="carousel-container">
-				<ul class="carousel-list">
-					<li class="carousel-item native-look-and-feel"><summary> Burgers
-							delen kennis voor de publieke zaak.</summary>
-						<div class="feature-icon"></div></li>
-					<li class="carousel-item carousel-content"><summary>Vele forums
-							makkelijk te volgen.</summary> <i class="icon-picture"></i></li>
-					<li class="carousel-item backbone-content"><summary>Simpele toevoeging aan
-					 Open Data platform tbv mobiele apps</summary>
-						<div class="feature-icon"></div></li>
-				</ul>
-				<div class="carousel-navigation-container">
-					<ul class="carousel-navigation">
-						<li class="active" data-index="0"></li>
-						<li data-index="1"></li>
-						<li data-index="2"></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>-->
 		</div>
 
 
@@ -219,76 +180,5 @@ html, body {
 	</div>
 	<script src="/static/js/example.js"></script>
 
-
-	<!--
-	Open data gebruiken om kwaliteit te verbeteren
-	Open data gebruiken om feedback te krijgen van burgers, mail zodra gereed.
-	Proces erachter is sociaal
-	------------------
-	Bak bestaat niet in database, telefoneer hiervoor met de gemeente
-	Doorlinken met de gemeente /
-	BuitenBeter.nl
-
-
-
-
-
-			    <div class="toggle active example-toggle"><div class="toggle-handle"></div></div>
-
-  <header class="bar-title">
-   <div class="header-animated">
-     <div class="button-prev">Back</div>
-     <h1 class="title">Ratchet CSS</h1>
-     <div class="button-next">Next</div>
-  </header>
-  <div class="content ratchet-content">
-   <p>Jr. was inspired by Ratchet and pulls in their gorgeous styles.</p>
-   <p>Here are some examples:</p>
-   <div class="ratchet-examples">
-    <ul class="list inset">
-     <li>
-       <a href="#">
-         List item 1
-         <span class="chevron"></span>
-         <span class="count">4</span>
-       </a>
-     </li>
-    </ul>
-    <div class="button-block button-main">Block button</div>
-    <a class="button">Mini</a> <a class="button-main">buttons</a> <a class="button-positive">are</a> <a class="button-negative">awesome!</a>
-    <div class="toggle active example-toggle"><div class="toggle-handle"></div></div>
-    <div class="example-cnts"><span class="count">1</span><span class="count-main">2</span><span class="count-positive">3</span><span class="count-negative">4</span></div>
-    <input type="search" placeholder="Search">
-   </div>
-   <p>For more examples checkout the <a href="http://maker.github.com/ratchet/">ratchet project.</a></p>
-  </div>
-
-
-
-			<div class="content ratchet-content">
-				<p>
-				 	App voor <a href="https://data.eindhoven.nl/browse">films voor
-						 Eindhoven</a>.
-				</p>
-				<p>Hier wat voorbeelden:</p>
-				<div class="ratchet-examples">
-					<ul class="list inset">
-						<li><a href="#"> List item 1 <span class="chevron"></span>
-								<span class="count">4</span>
-						</a></li>
-					</ul>
-					<div class="button-block button-main">Block button</div>
-					<a class="button">Mini</a> <a class="button-main">buttons</a> <a
-						class="button-positive">are</a> <a class="button-negative">awesome!</a>
-					<div class="toggle active example-toggle">
-						<div class="toggle-handle"></div>
-					</div>
-					<div class="example-cnts">
-						<span class="count">1</span><span class="count-main">2</span>
-						<span class="count-positive">3</span><span class="count-negative">4</span>
-					</div>
-					<input type="search" placeholder="Search">
-				</div>
-			</div>-->
 </body>
 </html>

@@ -19,11 +19,11 @@
 // if will check to see if you are on a touch device and if you are, attach a
 // touchend event instead.
 
-var HomeView = Jr.View.extend({
+var KaartView = Jr.View.extend({
   // Simply render our HomeTemplate in the View's HTML
   render: function(){
 	  	//document.getElementByClassName('content')
-    this.$el.html(document.getElementById('page1').cloneNode(true));
+    this.$el.html(document.getElementById('kaart').cloneNode(true));
     this.afterRender();
     // Always return 'this' so Jr.Router can append your view to the body
     return this;
@@ -49,7 +49,7 @@ var HomeView = Jr.View.extend({
   },
 
   onClickShowMoreButton: function() {
-	  console.log('Jr.Navigator.navigate'); 
+	  console.log('Jr.Navigator.navigate');
     // Jr.Navigator works like Backbone.history.navigate, but it allows you to add an animation in the mix.
     Jr.Navigator.navigate('page2',{
       trigger: true,
@@ -78,11 +78,11 @@ var HomeView = Jr.View.extend({
 });
 
 
-var Page1View = Jr.View.extend({
+var KiesMeldingView = Jr.View.extend({
 	  // Simply render our HomeTemplate in the View's HTML
 	  render: function(){
 		  	//document.getElementByClassName('content')
-	    this.$el.html(document.getElementById('page2').cloneNode(true));
+	    this.$el.html(document.getElementById('kiesmelding').cloneNode(true));
 	    this.afterRender();
 	    // Always return 'this' so Jr.Router can append your view to the body
 	    return this;
@@ -107,7 +107,7 @@ var Page1View = Jr.View.extend({
 	    'click .cn2 li': 'onClickCarouselNavigationItem',
 	    'click .button-prev': 'onClickButtonPrev'
 	  },
-	
+
 	  onClickButtonPrev: function() {
 	    Jr.Navigator.navigate('home',{
 	      trigger: true,
@@ -133,14 +133,14 @@ var Page1View = Jr.View.extend({
 
 	  onScrollCarousel: function() {
 	    // Set the active dot when the user scrolls the carousel
-		  console.log('start'); 
+		  console.log('start');
 	    var index = this.$('.cl2').flickable('segment');
-	    //console.log('index ' +index); 
+	    //console.log('index ' +index);
 	    this.$('.cn2 li').removeClass('active');
-	   // console.log('add ' +index); 
-	   // console.log(this); 
-	    
-	    //console.log(this.$('.cn2 li[data-index="'+index+'"]')[0]); 
+	   // console.log('add ' +index);
+	   // console.log(this);
+
+	    //console.log(this.$('.cn2 li[data-index="'+index+'"]')[0]);
 	    this.$('.cn2 li[data-index="'+index+'"]').addClass('active');
 	  },
 
@@ -148,7 +148,7 @@ var Page1View = Jr.View.extend({
 	    // Scroll the carousel when the user clicks on a dot.
 	    var index = $(e.currentTarget).attr('data-index');
 	    this.$('.cl2').flickable('segment',index);
-	    this.setUpCarousel(); 
+	    this.setUpCarousel();
 	  }
 
 	});
@@ -187,20 +187,17 @@ var PushStateView = Jr.View.extend({
 
 var AppRouter = Jr.Router.extend({
   routes: {
-    'home': 'home',
-    'page2': 'page2',
+    'kaart': 'kaart',
+    'kiesmelding': 'kiesmelding',
     'page3': 'page3'
   },
 
-  home: function(){
-    var homeView = new HomeView();
-    this.renderView(homeView);
+  kaart: function(){
+    this.renderView(new KaartView());
   },
 
-  page2: function() {
-    var ratchetView = new Page1View();
-    this.renderView(ratchetView);
-    initMap(); 
+  kiesmelding: function() {
+    this.renderView(new KiesMeldingView());
   },
 
   page3: function() {
@@ -212,37 +209,14 @@ var AppRouter = Jr.Router.extend({
 
 var startup = new AppRouter();
 Backbone.history.start();
-Jr.Navigator.navigate('home',{
+Jr.Navigator.navigate('kaart',{
   trigger: true
 });
 
 
-
-function initMap(){
-	window.x=document.getElementById('page2').getElementsByClassName('mapholder')[0];
-	
-	getLocation();
-}
-
-function getLocation()  {
-  if (navigator.geolocation)     {
-    navigator.geolocation.getCurrentPosition(showPosition,showError);
-  } else {
-	x.innerHTML="Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  var latlon=position.coords.latitude+","+position.coords.longitude;
-
-  var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
-  +latlon+"&zoom=14&size=400x300&sensor=false";
-  document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
-}
-
 function showError(error)
   {
-  switch(error.code) 
+  switch(error.code)
     {
     case error.PERMISSION_DENIED:
       x.innerHTML="User denied the request for Geolocation.";
