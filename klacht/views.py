@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Klacht
-import datetime, csv
+import datetime, csv, os
 import json
 
 
 def home(request):
-    reader = csv.DictReader(open('afvalbakken.csv'))
+    print os.path.dirname(__file__) + '/afvalbakken.csv'
+    reader = csv.DictReader(open(os.path.dirname(__file__) + '/afvalbakken.csv'))
     bakken = json.dumps( [ row for row in reader ] )
 
     return render(request, 'home.html', {'bakken': bakken})
