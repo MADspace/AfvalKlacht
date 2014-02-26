@@ -6,7 +6,6 @@ import json
 
 
 def home(request):
-    print os.path.dirname(__file__) + '/afvalbakken.csv'
     reader = csv.DictReader(open(os.path.dirname(__file__) + '/afvalbakken.csv'))
     bakken = json.dumps( [ row for row in reader ] )
 
