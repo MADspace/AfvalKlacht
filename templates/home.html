@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
   <title>Ondergrondse containers</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -26,10 +26,26 @@ function initialize() {
         var pos = new google.maps.LatLng(bak.lat, bak.lng);
         var marker = new google.maps.Marker({
             position: pos,
+            afvalbak: bak['id'],
             map: map,
             icon: 'static/images/' + (bak['type'] == 'Restafval' ? 'vuilniszak' : 'fles') + '.png'
         });
 
+        google.maps.event.addListener(marker, 'click', function() {
+            window.location = 'bak/' + this.afvalbak;
+        });
+
+    }
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+    function showPosition(position)
+    {
+        map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+        map.setZoom(18);
     }
 }
 </script>
