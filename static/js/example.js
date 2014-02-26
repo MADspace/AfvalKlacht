@@ -109,7 +109,7 @@ var KiesMeldingView = Jr.View.extend({
 	  },
 
 	  onClickButtonPrev: function() {
-	    Jr.Navigator.navigate('home',{
+	    Jr.Navigator.navigate('kaart',{
 	      trigger: true,
 	      animation: {
 	        type: Jr.Navigator.animations.SLIDE_STACK,
@@ -211,17 +211,17 @@ var OpmerkingView = Jr.View.extend({
   },
 
   onClickButtonNext: function() {
-    Jr.Navigator.navigate('verstuur',{
+    Jr.Navigator.navigate('verstuurd',{
       trigger: true,
       animation: {
         type: Jr.Navigator.animations.SLIDE_STACK,
-        direction: Jr.Navigator.directions.Left
+        direction: Jr.Navigator.directions.LEFT
       }
     });
   },
 });
 
-var OpmerkingView = Jr.View.extend({
+var VerstuurdView = Jr.View.extend({
   render: function() {
 	    this.$el.html(document.getElementById('verstuurd').cloneNode(true));
     return this;
@@ -242,7 +242,8 @@ var AppRouter = Jr.Router.extend({
     'kaart': 'kaart',
     'kiesmelding': 'kiesmelding',
     'foto': 'foto',
-    'opmerking': 'opmerking'
+    'opmerking': 'opmerking',
+    'verstuurd': 'verstuurd'
   },
 
   kaart: function(){
